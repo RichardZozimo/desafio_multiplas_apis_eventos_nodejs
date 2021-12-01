@@ -1,13 +1,20 @@
-﻿module.exports = class Evento {
-    constructor(){
-      this.id = 0;
-      this.idUsuario = 0;
-      this.titulo = "";
-      this.descricao = "";
-      this.dataInicio = new Date();
-      this.dataFim = new Date();
-      this.dataCriacao = new Date();
-      this.dataAtualizacao = new Date();
-    }
+'use strict';
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require("../config/sequelize_config")
 
-  }
+class Evento extends Model {
+  static associate(models) { }
+};
+
+Evento.init({
+  idUsuario: DataTypes.INTEGER,
+  titulo: DataTypes.STRING,
+  descricao: DataTypes.STRING,
+  dataInicio: DataTypes.DATE,
+  dataFim: DataTypes.DATE
+}, {
+  sequelize,
+  modelName: 'Evento',
+});
+
+module.exports = Evento;
